@@ -5,14 +5,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Hw5.Models;
+using ServiceReference;
+using ServiceReference1;
 
 namespace Hw5.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var client = new TextCasingSoapTypeClient(TextCasingSoapTypeClient.EndpointConfiguration.TextCasingSoap);
+            var response = await client.InvertCaseFirstAdjustStringToCurrentAsync("hello World");
+            ViewData["string"] = response.Body.InvertCaseFirstAdjustStringToCurrentResult;
+
+
+            var weatherClient = new WeatherSoapClient(WeatherSoapClient.EndpointConfiguration.WeatherSoap);
+            var weatherResponse = await weatherClient.GetCityForecastByZIPAsync("84627");
+            ViewData["weather"] = weatherResponse.;
+                return View();
         }
 
         public IActionResult Privacy()
