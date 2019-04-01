@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Hw5.Models;
 using ServiceReference;
-using ServiceReference1;
 
 namespace Hw5.Controllers
 {
@@ -18,10 +17,8 @@ namespace Hw5.Controllers
             var response = await client.InvertCaseFirstAdjustStringToCurrentAsync("hello World");
             ViewData["string"] = response.Body.InvertCaseFirstAdjustStringToCurrentResult;
 
+      
 
-            var weatherClient = new WeatherSoapClient(WeatherSoapClient.EndpointConfiguration.WeatherSoap);
-            var weatherResponse = await weatherClient.GetCityForecastByZIPAsync("84627");
-            ViewData["weather"] = weatherResponse.;
                 return View();
         }
 
