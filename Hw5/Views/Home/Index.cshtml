@@ -1,10 +1,17 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Weather";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p>@ViewData["string"]</p>
-    <p>@ViewData["weather"]</p>
+    <h1 class="display-4">Get todays weather for the city of your choice.</h1>
+    <h3>Enter the name of the city you want the weather for:</h3>
+    <form  asp-action="Location" >
+        <input type="text" name="address"/>
+        <button type="submit">Submit</button>
+    </form>
+    <h3>Or just for the fun of it type in a sentance to see what happens.</h3>
+    <form  asp-action="InvertString"  >
+        <input type="text" name="invert"/>
+        <button type="submit">Submit</button>
+    </form>
 </div>
